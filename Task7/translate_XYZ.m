@@ -1,4 +1,4 @@
-function translate_XYZ_simple(transform_container, direction_axis, distance)
+function translate_XYZ(transform_container, direction_axis, distance)
     step_direction = sign(distance); 
     delta = direction_axis * step_direction; 
 
