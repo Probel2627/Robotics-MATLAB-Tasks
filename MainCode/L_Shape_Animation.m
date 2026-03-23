@@ -56,6 +56,6 @@ pause(1);
 
 disp('Frame 4...');
 f4 = create_mobile_frame();
-translate_XYZ(f4, [0 1 0], 8);
+translate_XYZ(f4, [0 1 0], 8); % Путь к [0, 8, 3]
 translate_XYZ(f4, [0 0 1], 3); 
 f4.Matrix(1:3, 1:3) = T4_0(1:3, 1:3);
