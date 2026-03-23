@@ -23,40 +23,38 @@ while ishandle(my_box)
     if stick_X > -0.15 && stick_X < 0.15
         delta = 0;
         
-    % 2. Движение ВПЕРЕД (Вправо по стику)
+    % MovingRight
     elseif stick_X >= 0.15 && stick_X < 0.5
-        delta = 0.5;  % 1-я скорость (Медленно)
+        delta = 0.5;  % Slow
     elseif stick_X >= 0.5 && stick_X < 0.9
-        delta = 1.0;  % 2-я скорость (Средне)
+        delta = 1.0;  % Mid
     elseif stick_X >= 0.9
-        delta = 2.0;  % 3-я скорость (Быстро)
+        delta = 2.0;  % Fast
         
-    % 3. Движение НАЗАД (Влево по стику)
+    %MovingLeft
     elseif stick_X <= -0.15 && stick_X > -0.5
-        delta = -0.5; % 1-я скорость (Медленно назад)
+        delta = -0.5; % Slow
     elseif stick_X <= -0.5 && stick_X > -0.9
-        delta = -1.0; % 2-я скорость (Средне назад)
+        delta = -1.0; % Mid
     elseif stick_X <= -0.9
-        delta = -2.0; % 3-я скорость (Быстро назад)
+        delta = -2.0; % Fast
     end
     
-    % --- ПРИМЕНЕНИЕ СКОРОСТИ (Accumulation) ---
     if delta ~= 0
-        % Создаем матрицу сдвига на величину delta по оси X
+        % Moving by axis where 'delta' is writed here ↓
         T_step = makehgtform('translate', [delta, 0, 0]);
         
-        % Инкрементное обновление: x_new = x_old + delta
-        % Умножаем СЛЕВА для движения по глобальной оси X
+        % Updating view, multiplying on left cause we are moving by XYZ axis
         my_box.Matrix = T_step * my_box.Matrix; 
     end
-    
-    % Выход из программы по кнопке
+
+    %Button Exit
     if buttons(2) == 1 
         disp('Exit from manipulation by joystick');
+        close all; clear; clc;
         break;
     end
     
-    % Обновляем графику и задаем частоту кадров (стабильный цикл)
     drawnow;
     pause(0.05); 
 end
