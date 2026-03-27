@@ -71,18 +71,17 @@ while true
     if abs(axes_data(4)) > dead_zone
         new_jnts(4) = new_jnts(4) + axes_data(4) * speed_j4;
     end
-    
-    % 1. Двигаем физического робота в RoboDK
+  
     robot.setJoints(new_jnts);
     
-    % --- СИНХРОНИЗАЦИЯ С MATLAB ---
-    % 2. Спрашиваем у робота его новую матрицу позиции 4x4
     T_current = robot.Pose(); 
-    
-    % 3. Вставляем эту матрицу напрямую в твой визуальный фрейм!
-    tcp_frame.Matrix = T_current;
-    
-    % Обновляем картинку
+
+    T_scale = makehgtform('scale', 150);
+  
+    T_final = T_current * T_scale;
+
+    tcp_frame.Matrix = T_final;
+ 
     drawnow;
     pause(0.02); 
 end
