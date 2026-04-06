@@ -1,6 +1,5 @@
 close all; clear; clc;
 
-figure;
 Lshape();
 xlabel('X'); ylabel('Y'); zlabel('Z');
 title('Task 7.1: L-Shape Chain Rule');
@@ -33,8 +32,8 @@ T4_0 = T3_0 * T4_3;
 
 disp('Frame 1...');
 f1 = create_mobile_frame();
-translate_XYZ(f1, [1 0 0], 6); 
-rotation_XYZ(f1, [0 0 1], 90, [6 0 0]); 
+translate_XYZ(f1, [1 0 0], 6);
+rotation_XYZ(f1, [0 0 1], 90, [6 0 0]);
 pause(1); 
 
 disp('Frame 2...');

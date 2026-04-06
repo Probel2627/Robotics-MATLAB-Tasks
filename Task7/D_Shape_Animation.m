@@ -54,8 +54,9 @@ pause(1);
 disp('Animating Frame 4...');
 f4 = create_mobile_frame();
 translate_XYZ(f4, [1 0 0], 8);
-translate_XYZ(f4, [0 1 0], 3);
-translate_XYZ(f4, [0 0 1], 8);
+translate_XYZ(f4, [0 1 0], 8);
+translate_XYZ(f4, [0 0 1], 3);
+translate_XYZ(f4, [0 -1 1], 5)
 f4.Matrix(1:3, 1:3) = T4_0(1:3, 1:3);
 pause(1);
 
