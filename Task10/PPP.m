@@ -1,7 +1,11 @@
 function T_total = PPP(d1, d2, d3, frames)
-    T1 = makehgtform('translate', [d1, 0, 0]);
-    T2 = T1 * makehgtform('translate', [0, d2, 0]);
-    T3 = T2 * makehgtform('translate', [0, 0, d3]);
+    T1_pos = makehgtform('translate', [d1, 0, 0]);
+    T1 = T1_pos * makehgtform('yrotate', pi/2);
+
+    T2_pos = T1_pos * makehgtform('translate', [0, d2, 0]);
+    T2 = T2_pos * makehgtform('xrotate', -pi/2);
+
+    T3 = T2_pos * makehgtform('translate', [0, 0, d3]);
 
     frames(1).Matrix = eye(4);
     frames(2).Matrix = T1;
